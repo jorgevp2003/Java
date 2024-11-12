@@ -5,70 +5,74 @@ import java.io.PrintStream;
 public class Metodos {
 
 }
-class numeros {
-	int num;
+class Numeros {
+	int[] array;
 	
-	public numeros (int num) {
-		this.num = num;
+	
+	void crearArray(int tamaño){
+		
+		//crea array
+		array = new int[tamaño];	
+		crearNumeros();
+		
 	}
+
+	void crearNumeros() {
 		
-	
-	
-	int[] random() {
-		int contador1 = 0;
-		int contador2 = 0;
-		int array[] = new int[27];
-		
-		for(int v = 1;v<=25;v++) {
+		//Crear Numero
+		for (int i=0;i<=25;i++) {
+			int num;
+			do {
+				num =(int)( Math.random()*90)+1;
+			} while (comprobarQueNoSeRepite(num));
 			
-			//Genera numero random
-			int num = (int) (Math.random()*91);
+			array[i]=num;
 			
-			//Comprueba que no este usado
-				while (contador1 <= 25) {
-					if (num != array[contador1]) {
-						contador1++;
-					} else break;
-				
-					//Si no esta usado se asigna a un array.
-						if (contador1 ==25) {
-							array[contador2] = num;
-							contador2++;
-						} else {
-								v = v-1;
-						       }
-			
-			}	
 		}
-		return array;
-	
 	}
 	
-		PrintStream mostrar(numeros num) {
+	boolean comprobarQueNoSeRepite(int numero) {
+		
+		
+		for(int i=0;i<=24;i++) {
 			
-			int contador3 = 0;
-			int contador4 =1;
-			
-			int array[] = num.random();
-			  
-			//Imprimir de 5 en 5
-			
-			while (contador3 <=24) {
-				while (contador4 <=5) {
-					System.out.print(array[contador3]);
-					contador3++;
-					contador4++;
-				}
-				
-				//Resetear fila de 5
-				
-				if (contador4 == 5) {
-					contador4 = 5;
-				} else break;
+			if(array[i]==numero){
+			return true;
+			} 			
+		}
+		return false;
+	}
+	
+	int mostrarNumeros() {
+		
+		for(int i = 0;i<=4;i++){
+			int contador =4;
+			int contador2 = 0;
+			switch (i) {
+				case 0: contador2 = 0;
+						break;
+				case 1: contador2 = 5;
+						break;
+				case 2: contador2 = 10;
+						break;
+				case 3: contador2 = 15;
+						break;
+				case 4: contador2 = 20;
+						break;
 			}
-			return System.out.printf("god");
+			
+			while (contador>=0) {
+				System.out.print( " " + array[contador2]);
+				contador2++;
+				contador--;
+			}
+			System.out.println("");
+			contador =4;
+			contador2 =contador2+5;
+		
+			
 		}
-		
-		
+		return 0;
+	}
 	
-}
+}	
