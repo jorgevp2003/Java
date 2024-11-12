@@ -6,6 +6,7 @@ public class Arrais {
 		Numeros numeros = new Numeros();
 		numeros.crearArray(26);
 		numeros.mostrarNumeros();
+		numeros.jugarBingo();
 		
 		
 		
